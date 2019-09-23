@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Kodinger">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Login Page</title>
+
+</head>
+
+<body class="my-login-page">
+<section class="h-100">
+  <div class="container h-100">
+    <div class="row justify-content-md-center h-100">
+      <div class="card-wrapper">
+        <!--        <div class="brand">-->
+        <!--          <img src="img/logo.jpg" alt="logo">-->
+        <!--        </div>-->
+
+        <div class="card fat">
+          <div class="card-body">
+            <br>
+
+            <div class="wrapper">
+              <img src="\assets\img\join.png" height="200" width="500">
+
+            </div><br><br><br><br>
+                        <form method="POST" class="my-login-validation" novalidate="" formGroup>
+                          <div class="form-group">
+                            <label for="email">E-Mail Address</label>
+                            <input id="email" type="email" class="form-control" name="email" value="" required autofocus formControlName="Mail" >
+                            <div class="help-block form-text with-errors form-control-feedback"></div>
+                            <div *ngIf="submitted && s.Mail.errors" class="invalid-feedback"><div *ngIf="s.Mail.errors.required">Mail required</div></div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password
+            </label>
+            <input id="password" type="password" class="form-control" name="password" required data-eye formControlName="Password">
+            <div class="help-block form-text with-errors form-control-feedback"></div>
+                            <div *ngIf="submitted && s.password.errors" class="invalid-feedback"><div *ngIf="s.password.errors.required">Password required</div></div>
+
+            <a routerLink="/forgot"  >
+              Forgot Password?
+            </a>
+          </div>
+
+          <div class="form-group">
+            <div class="custom-checkbox custom-control">
+              <input type="checkbox" name="remember" id="remember" class="custom-control-input">
+              <label for="remember" class="custom-control-label">Remember Me</label>
+            </div>
+          </div>
+          <!--<div>
+            <input type="button" value="button" style="display: block; margin: 0 auto;">
+          </div>-->
+          <div class="form-group m-0">
+<!--            <button type="submit" class="btn btn-primary " style="display: block; margin:  auto; width: 200px;"  >-->
+                              <button type="submit" class="btn btn-primary btn-block" routerLink="/home" >
+
+              Login
+            </button>
+          </div>
+          <div class="mt-4 text-center">
+            Don't have an account? <a routerLink="/register" >Create One</a>
+          </div>
+          </form>
+          <br><br><br>
+        </div>
+      </div>
+      <!--        <div class="footer">-->
+      <!--          Copyright &copy; 2017 &mdash; Your Company-->
+      <!--        </div>-->
+    </div>
+  </div>
+  </div>
+</section>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+.my-login-page[_ngcontent-shy-c1] .card-wrapper[_ngcontent-shy-c1] {
+    width: 500px;
+    margin: auto;
+    background-color: azure;
+}
+*****************************************************************************************************************
+*****************************************************************************************************************
+*****************************************************************************************************************
+*****************************************************************************************************************
+//////////////ShoppingEditComponent/////////////////////
+
+/* export class ShoppingEditComponent implements OnInit {
+  @ViewChild('nameInput') nameInputRef: ElementRef;
+  @ViewChild('amountInput') amountInputRef: ElementRef;
+  @Output() ingredientAdded = new EventEmitter<Ingredient>();
+  constructor() { }
+
+  ngOnInit() {
+  }
+  onAddItem() {
+    const ingName = this.nameInputRef.nativeElement.value;
+    const ingAmount = this.amountInputRef.nativeElement.value;
+    const newIngredient = new Ingredient(ingName, ingAmount);
+    this.ingredientAdded.emit(newIngredient);
+  }*/
+  
+  ***************************************************************************************************************************
+  ////////////////////////ShoppingEditComponent/////////////////////
+  <form>
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          *****<input type="text" id="name" class="form-control" #nameInput>
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="amount">Amount</label>
+          *****<input type="number" id="amount" class="form-control" #amountInput>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          *****<button class="btn btn-success" type="submit" (click)="onAddItem()">Add</button>
+          <button class="btn btn-danger" type="button">Delete</button>
+          <button class="btn btn-primary" type="button">Clear</button>
+        </div>
+      </div>
+    </form>
+	
+	***************************************************************************************************************************
+	///////////////////////ShoppingListComponent///////////
+	<div class="row">
+  <div class="col-xs-6">
+    <app-shopping-edit
+    (ingredientAdded)="onIngredientAdded($event)"></app-shopping-edit>
+  <hr>
+    <ul class="list-group">
+      <a class="list-group-item"
+         style="cursor: pointer"
+        *ngFor="let ingredient of ingredients">
+        {{ ingredient.name }} ({{ ingredient.amount }})
+      </a>
+    </ul>
+
+  </div>
+</div>
+*****************************************************************************************************************************
+/////////////// ShoppingListComponent///////////
+import { Component, OnInit } from '@angular/core';
+import { Ingredient } from '../Used-By-Others/Ingredient.model';
+
+@Component({
+  selector: 'app-shopping-list',
+  templateUrl: './shopping-list.component.html',
+  styleUrls: ['./shopping-list.component.css']
+})
+export class ShoppingListComponent implements OnInit {
+  ingredients: Ingredient[] = [
+    new Ingredient('Tomatoes', 20),
+    new Ingredient('Cheese', 10),
+    new Ingredient('Crust', 5),
+    new Ingredient('Pepperoni', 15),
+    new Ingredient('Tuna', 15),
+    new Ingredient('Beef', 20),
+    new Ingredient('Chicken', 12),
+    new Ingredient('Potatoes', 14),
+
+  ];
+  constructor() { }
+
+  ngOnInit() {
+  }
+  onIngredientAdded(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
+  }
+
+}
+*********************************************************************************************************************************************
+export class Ingredient {
+  constructor(public name: string, public amount: number) {}
+}
+***************************************/////////////////////////*******************************
+
